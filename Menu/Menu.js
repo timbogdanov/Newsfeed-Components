@@ -9,8 +9,6 @@ let menuItems = [
   'Log Out'
 ];
 
-const arrayLength = menuItems.length;
-
 const header = document.querySelector('.header')
 
 function menuMaker(menuDataObj) {
@@ -33,12 +31,9 @@ function menuMaker(menuDataObj) {
 }
 
 const menuButton = document.querySelector('.menu-button');
-
 menuButton.addEventListener('click', () => {
   menu.classList.toggle('menu--open');
 });
-
-
 
 menu = menuMaker(menuItems);
 
