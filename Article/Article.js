@@ -88,6 +88,52 @@ const data = [
   }
 ];
 
+const articleContiner = document.querySelector('.articles');
+
+const articleMaker = (articleDataObj => {
+
+  const articleBody = document.createElement('div');
+
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p')
+  const articleParagraph1 = document.createElement('p');
+  const articleParagraph2 = document.createElement('p');
+  const articleParagraph3 = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+
+  articleBody.classList.add('article');
+  articleDate.classList.add('date')
+  expandButton.classList.add('expand-button');
+
+  articleContiner.appendChild(articleBody);
+  articleBody.appendChild(articleTitle);
+  articleBody.appendChild(articleDate);
+  articleBody.appendChild(articleParagraph1);
+  articleBody.appendChild(articleParagraph2);
+  articleBody.appendChild(articleParagraph3);
+  articleBody.appendChild(expandButton);
+
+  articleTitle.textContent = articleDataObj.title;
+  articleDate.textContent = articleDataObj.date;
+  articleParagraph1.textContent = articleDataObj.firstParagraph;
+  articleParagraph2.textContent = articleDataObj.secondParagraph;
+  articleParagraph3.textContent = articleDataObj.thirdParagraph;
+  expandButton.textContent = 'OPEN';
+
+  expandButton.addEventListener('click', () => {
+    articleBody.classList.toggle('article-open');
+  });
+
+  return articleBody;
+
+});
+
+data.forEach(articleObj => {
+  articleBody = articleMaker(articleObj);
+  articleContiner.appendChild(articleBody);
+});
+
 /* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
 
   <div class="article">
